@@ -3,6 +3,7 @@ import Navbar from './nav';
 import Login from './login'
 import Home from './home';
 import Signup from './signup';
+import './nav.css'
 
 function App() {
 

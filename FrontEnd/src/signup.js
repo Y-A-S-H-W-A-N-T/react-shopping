@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import './signup.css'
 const Signup = () => {
+
     return ( 
         <div className="signup">
         <h1>SIGNUP</h1>

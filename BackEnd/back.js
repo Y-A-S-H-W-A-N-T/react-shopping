@@ -16,6 +16,34 @@ const database = mysql.createConnection({
     database:'react'
 })
 
+
+app.post('/signup',(req,res)=>{
+    const username = req.body.username
+    const email = req.body.email
+    const phone = req.body.phone
+    const date = req.body.date
+    const password = req.body.password
+    const confirmpassword = req.body.confirmpassword
+    const query = `INSERT INTO website.credentials (username, email, phone, date, password) VALUES ('${username}', '${email}', '${phone}', '${date}', '${password}');`
+    if(password===confirmpassword)
+    {
+        database.query(query,(err,data)=>{
+            if(err){
+                console.log(err)
+            }
+            else{
+                res.json({msg:"SIGNED IN",status:200})
+                console.log("User created with name => ",username)
+            }
+        })
+    }
+    else
+    {
+        res.json({msg:"PASSWORDS MUST MATCH WITH THE CONFIRMPASSWORD",status:100})
+    }
+})
+
+
 database.connect((err)=>{
     if(err)
     {

@@ -41,7 +41,15 @@ const Signup = () => {
                         go.push('/')
                     },1000)
                 }
-                if(data.status===100)
+                if(data.status === 'mismatch')
+                {
+                    setMessage(data.msg)
+                }
+                if(data.status === 'invalid number')
+                {
+                    setMessage(data.msg)
+                }
+                if(data.status === 1000)
                 {
                     setMessage(data.msg)
                 }
@@ -51,7 +59,6 @@ const Signup = () => {
             setMessage(e.message)
         })
     }
-
     return (
         <div className="signup">
         <h1>SIGNUP</h1>

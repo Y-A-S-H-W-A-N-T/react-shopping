@@ -15,8 +15,6 @@ const database = mysql.createConnection({
     multipleStatements:true,
     database:'react'
 })
-
-
 app.post('/signup',(req,res)=>{
     const username = req.body.username
     const email = req.body.email
@@ -25,23 +23,45 @@ app.post('/signup',(req,res)=>{
     const password = req.body.password
     const confirmpassword = req.body.confirmpassword
     const query = `INSERT INTO website.credentials (username, email, phone, date, password) VALUES ('${username}', '${email}', '${phone}', '${date}', '${password}');`
-    if(password===confirmpassword)
+    if(phone.length===10)
     {
-        database.query(query,(err,data)=>{
-            if(err){
-                console.log(err)
-            }
-            else{
+        if(password===confirmpassword)
+        {
+             database.query(query,(err,data)=>{
+                if(err){
+                res.json({msg:"Error in fetching data from database",status:1000})
+                }
+                else{
                 res.json({msg:"SIGNED IN",status:200})
                 console.log("User created with name => ",username)
-            }
-        })
+                }
+            })
+        }
+        else
+        {
+            res.json({msg:"PASSWORDS MUST MATCH WITH THE CONFIRMPASSWORD",status:'mismatch'})
+        }
     }
     else
     {
-        res.json({msg:"PASSWORDS MUST MATCH WITH THE CONFIRMPASSWORD",status:100})
+        res.json({msg:"Invalid Phone number",status:'invalid number'})
     }
+    
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 database.connect((err)=>{

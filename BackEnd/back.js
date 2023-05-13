@@ -10,7 +10,7 @@ app.use(cors())
 //connecting to database
 const database = mysql.createConnection({
     host:'localhost',
-    user:'yashwant',
+    user:'root',
     password:'password',
     multipleStatements:true,
     database:'react'
@@ -48,26 +48,10 @@ app.post('/signup',(req,res)=>{
     }
     
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 database.connect((err)=>{
     if(err)
     {
-        console.log("Error in connecting")
+        console.log(err)
     }
     else
     {

@@ -13,7 +13,7 @@ const database = mysql.createConnection({
     user:'root',
     password:'password',
     multipleStatements:true,
-    database:'react'
+    database:'website'
 })
 app.post('/signup',(req,res)=>{
     const username = req.body.username

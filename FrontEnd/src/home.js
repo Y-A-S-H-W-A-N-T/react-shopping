@@ -1,13 +1,14 @@
+import { Link } from 'react-router-dom';
 const Home = () => {
     return ( 
         <div className="Home">
             <div className="search_bar">
         <input type="search" placeholder="search...."/>
-        <a><img src="./images/search.png"/></a>
+        <Link to="/underdev"><img src="./images/search.png" alt='search'/></Link>
      </div>
      <div className="add">
         <img src="./images/grocery.jpg" alt=""/>
-        <h1>Try out the new quick cart<a>Quick Cart</a></h1>
+        <h1>Try out the new quick cart<Link to='/underdev'>Quick Cart</Link></h1>
      </div>
      <div className="main-scroll-div">
         <div></div>
@@ -25,10 +26,10 @@ const Home = () => {
      <footer>
         <div>
             <ul>
-                <li><a>Contact Us</a></li>
-                <li><a>Help</a></li>
-                <li><a>More</a></li>
-                <li><a>About</a></li>
+                <li><Link to="/underdev">Contact Us</Link></li>
+                <li><Link to="/underdev">Help</Link></li>
+                <li><Link to="/underdev">More</Link></li>
+                <li><Link to="/underdev">About</Link></li>
             </ul>
         </div>
      </footer>

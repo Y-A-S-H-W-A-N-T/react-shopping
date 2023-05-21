@@ -1,13 +1,18 @@
+//express Setup
+
 const express = require('express')
 const app = express()
-const mysql = require('mysql')
 const cors = require('cors')
 
 // middlewears
+
 app.use(express.json())
 app.use(cors())
 
-//connecting to database
+// Database Connectivity
+
+const mysql = require('mysql')
+
 const database = mysql.createConnection({
     host:'localhost',
     user:'root',
@@ -15,6 +20,26 @@ const database = mysql.createConnection({
     multipleStatements:true,
     database:'website'
 })
+
+database.connect((err)=>{
+    if(err)
+    {
+        console.log(err)
+    }
+    else
+    {
+        console.log("Connected to MYSQL")
+    }
+})
+
+// Server Listening
+
+app.listen(5000,()=>{
+    console.log("Server running on port 5000")
+})
+
+// Get and Post Requests
+
 app.post('/signup',(req,res)=>{
     const username = req.body.username
     const email = req.body.email
@@ -48,19 +73,34 @@ app.post('/signup',(req,res)=>{
     }
     
 })
-database.connect((err)=>{
-    if(err)
-    {
-        console.log(err)
-    }
-    else
-    {
-        console.log("Connected to MYSQL")
-    }
-})
 
-// Get and Post Requests
-
-app.listen(5000,()=>{
-    console.log("Server running on port 5000")
+app.post('/login',(req,res)=>{
+    const user = req.body.user
+    const password = req.body.password
+    var flag = 1
+    const query = `SELECT * FROM website.credentials;`
+    database.query(query,(err,data)=>{
+        if(err)
+        {
+            console.log(err)
+        }
+        else
+        {
+            for(let i=0;i<data.length;i++)
+            {
+                if(data[i].username===user && data[i].password===password)
+                {   
+                    console.log("Yes")
+                    // res.json({msg:"LOGED IN",status:'validUser'})
+                    flag = 0
+                    break
+                }
+            }
+            if(flag === 1)
+            {   
+                console.log("NO")
+                // res.json({msg:"WRONG CREDENTIALS",status:'invalidUser'})
+            }
+        }
+    })
 })

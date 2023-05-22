@@ -1,5 +1,21 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 const Home = () => {
+
+    const [items,setItems] = useState([{}])
+    console.log(items)
+
+    useEffect(()=>{
+        fetch(
+          "/data",
+          {mode: 'no-cors'}
+        ).then(
+          data=>data.json()
+        ).then(
+          data=>setItems(data)
+        )
+    },[])
+
     return ( 
         <div className="Home">
             <div className="search_bar">
@@ -10,23 +26,23 @@ const Home = () => {
         <img src="./images/grocery.jpg" alt=""/>
         <h1>Try out the new quick cart<Link to='/underdev'>Quick Cart</Link></h1>
      </div>
-     <div className="main-scroll-div">
-        <div></div>
-        <div className="cover">
-            <div className="scroll-images">
-                <div className="child"><img className="child-images" src="./images/clothes1.jpg" alt=""/></div>
-                <div className="child"><img className="child-images" src="./images/clothes2.jpg" alt=""/></div>
-                <div className="child"><img className="child-images" src="./images/clothes3.jpg" alt=""/></div>
-                <div className="child"><img className="child-images" src="./images/clothes4.jpg" alt=""/></div>
-                <div className="child"><img className="child-images" src="./images/clothes5.jpg" alt=""/></div>
-            </div>
-        </div>
-        <div></div>
-     </div>
+            {items.map((data,id)=>(
+                    <div className='' key={id}>
+                    <div className="main-scroll-div">
+                    <div></div>
+                        <div className="cover">
+                            <div className="scroll-images">
+                                <img src={data.type} alt="" />
+                            </div>
+                        </div>
+                        <div></div>
+                    </div>
+                    </div>
+                ))}
      <footer>
         <div>
             <ul>
-                <li><Link to="/underdev">Contact Us</Link></li>
+                <li><Link to="/contact">Contact Us</Link></li>
                 <li><Link to="/underdev">Help</Link></li>
                 <li><Link to="/underdev">More</Link></li>
                 <li><Link to="/underdev">About</Link></li>

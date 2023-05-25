@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import './css/images.css'
 const Home = () => {
 
     const [items,setItems] = useState([{}])
@@ -26,23 +27,21 @@ const Home = () => {
         <img src="./images/grocery.jpg" alt=""/>
         <h1>Try out the new quick cart<Link to='/underdev'>Quick Cart</Link></h1>
      </div>
-            {items.map((data,id)=>(
-                    <div className='' key={id}>
-                    <div className="main-scroll-div">
-                    <div></div>
-                        <div className="cover">
-                            <div className="scroll-images">
-                                <img src={data.type} alt="" />
-                            </div>
+            <div className="scroll-images">
+                {items.map((data,id)=>(
+                        <div className='cover' key={id}>  
+                            <div className="child">
+                                <div className="child-images">
+                                    <img src={data.type} alt="" /> 
+                                </div>
+                            </div>  
                         </div>
-                        <div></div>
-                    </div>
-                    </div>
                 ))}
+            </div>
      <footer>
         <div>
             <ul>
-                <li><Link to="/contact">Contact Us</Link></li>
+                <li><Link to="/underdev">Contact Us</Link></li>
                 <li><Link to="/underdev">Help</Link></li>
                 <li><Link to="/underdev">More</Link></li>
                 <li><Link to="/underdev">About</Link></li>

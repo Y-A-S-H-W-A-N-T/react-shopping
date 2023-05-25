@@ -105,20 +105,6 @@ app.post('/login',(req,res)=>{
     })
 })
 
-// app.post('/',(req,res)=>{
-//     const query = `SELECT * FROM website.type;`
-//     database.query(query,(err,data)=>{
-//         if(err)
-//         {
-//             console.log("error in fetching");
-//         }
-//         else
-//         {
-//             res.json(data)
-//         }
-//     })
-// })
-
 app.get("/data",(req,res)=>{
     database.query("SELECT * FROM website.type;",(err,info)=>{
         if(err)

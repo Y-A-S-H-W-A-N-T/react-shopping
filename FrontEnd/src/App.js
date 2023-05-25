@@ -4,7 +4,6 @@ import Login from './login'
 import Home from './home';
 import Signup from './signup';
 import Underdev from './underdev';
-import Contact from './contact'
 import './css/nav.css'
 
 function App() {
@@ -25,9 +24,6 @@ function App() {
         </Route>
         <Route exact path="/underdev">
           <Underdev/>
-        </Route>
-        <Route exact path="/contact">
-          <Contact/>
         </Route>
       </Switch>
     </div>

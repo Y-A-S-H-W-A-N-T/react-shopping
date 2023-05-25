@@ -1,0 +1,43 @@
+/* horizontal scroll bar */
+
+.cover{
+    display: flex;
+    margin-left: 50px;
+    width: 90%;
+    height: 50%;
+}
+  
+.scroll-images{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    overflow: auto;
+    border-bottom: 10px solid rgb(172, 101, 238);
+    border-top: 10px solid rgb(172, 101, 238);
+}
+  
+.child{
+    min-width: 430px;
+    height: 400px;
+    cursor: pointer;
+    border: 10px rgb(172, 101, 238) solid;
+}
+  
+.child-images{
+    height: 100%;
+    width: 100%;
+}
+
+img{
+    height: 100%;
+    width: 100%;
+}
+
+.child:hover{
+    transition: 650ms;
+    border: 10px rgb(92, 58, 125) solid;
+    height: 380px;
+    min-width: 425px;
+}

@@ -1,7 +1,8 @@
+import './css/underconstruction.css'
 const Underdev = () => {
     return ( 
         <div>
-            <h1>Under Development</h1>
+            <img src="./images/underconstruction.gif" alt=""/>
         </div>
      );
 }

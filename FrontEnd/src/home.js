@@ -30,11 +30,13 @@ const Home = () => {
             <div className="scroll-images">
                 {items.map((data,id)=>(
                         <div className='cover' key={id}>  
-                            <div className="child">
-                                <div className="child-images">
-                                    <img src={data.type} alt="" /> 
-                                </div>
-                            </div>  
+                            <Link to="/underdev">
+                                <div className="child">
+                                    <div className="child-images">
+                                        <img src={data.type} alt="" /> 
+                                    </div>
+                                </div>  
+                            </Link>
                         </div>
                 ))}
             </div>

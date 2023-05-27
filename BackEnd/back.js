@@ -114,7 +114,6 @@ app.get("/data",(req,res)=>{
         else
         {
             res.json(info)
-            console.log(info)
         }        
     })
 })

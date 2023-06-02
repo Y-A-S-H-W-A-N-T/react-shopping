@@ -41,3 +41,14 @@ img{
     height: 380px;
     min-width: 425px;
 }
+
+p{
+    background-color: rgb(172, 101, 238);
+    font-size: 30px;
+    display: inline;
+    color: rgb(120, 242, 68);
+    font-family: cursive;
+    display: flex;
+    float: left;
+    width: 100%; 
+}

@@ -1,0 +1,10 @@
+.item{
+    margin: 10px;
+}
+.item img{
+    display: flex;
+    height: 10%;
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+}

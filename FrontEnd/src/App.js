@@ -4,8 +4,7 @@ import Login from './login'
 import Home from './home';
 import Signup from './signup';
 import Underdev from './underdev';
-import Items from './items';
-import './css/nav.css'
+import Item from './item';
 
 function App() {
 
@@ -26,8 +25,8 @@ function App() {
         <Route exact path="/underdev">
           <Underdev/>
         </Route>
-        <Route exact path="/item">
-          <Items/>
+        <Route exact path="/item/:id">
+          <Item/>
         </Route>
       </Switch>
     </div>

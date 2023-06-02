@@ -117,3 +117,17 @@ app.get("/data",(req,res)=>{
         }        
     })
 })
+
+app.get("/data/:id",(req,res)=>{
+    const id = req.params.id
+    database.query(`SELECT * FROM website.type where id=${id};`,(err,info)=>{
+        if(err)
+        {
+            console.log("Back end problem")
+        }
+        else
+        {
+            res.json(info)
+        }        
+    })
+})

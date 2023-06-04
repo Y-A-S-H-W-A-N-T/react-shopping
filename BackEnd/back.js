@@ -47,11 +47,24 @@ app.post('/signup',(req,res)=>{
     const date = req.body.date
     const password = req.body.password
     const confirmpassword = req.body.confirmpassword
-    const query = `INSERT INTO website.credentials (username, email, phone, date, password) VALUES ('${username}', '${email}', '${phone}', '${date}', '${password}');`
+    const value = "qwertyuioplkjhgfdsazxcvbnm!@#$%^&*()"
+    const key = "abcdefghijklmnopqrstuvwxyz0123456789"
     if(phone.length===10)
     {
         if(password===confirmpassword)
         {
+            var newpass = ''
+            for(let a=0;a<password.length;a++)
+            {
+                for(let i=0;i<36;i++)
+                {
+                    if(password[a]===key[i])
+                    {
+                        newpass+=value[i]
+                    }
+                }
+            }
+            const query = `INSERT INTO website.credentials (username, email, phone, date, password) VALUES ('${username}', '${email}', '${phone}', '${date}', '${newpass}');`
              database.query(query,(err,data)=>{
                 if(err){
                 res.json({msg:"Error in fetching data from database",status:1000})

@@ -1,4 +1,4 @@
-import { useParams} from "react-router-dom"
+import { useParams,Link } from "react-router-dom"
 import { useEffect, useState} from 'react';
 import './css/item.css'
 import './css/nav.css'
@@ -15,17 +15,25 @@ const Item = () => {
           data=>setItem(data)
         )
     },[])
-    console.log(item)
+    const Send = (e)=>{
+      e.preventDefault()
+      console.log("HELLO")
+    }
     return ( 
     <div>
         {item.map((data,id)=>(
           <div className='item' key={id}>  
-            <img src={data.type} alt="" />
-            <h1>{data.cloth}</h1>
-            <p>{data.cost}</p>     
+            <div className="pic">
+              <img src={data.type} alt="" />
+              <div className="details">
+                <h1>Cloth Type : {data.cloth}</h1>
+                <h1>Cost : ₹{data.cost}</h1>
+                <Link to="/underdev"><input type="submit" value="ADD TO CART" onSubmit={Send}/></Link>
+            </div>
+            </div>
           </div>
         ))}
     </div> );
 }
- 
+
 export default Item;
